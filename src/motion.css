@@ -1,0 +1,179 @@
+#top {
+  --motion-ease: cubic-bezier(.16, 1, .3, 1);
+}
+
+.reading-progress {
+  position: fixed;
+  z-index: 12;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: var(--wine);
+  pointer-events: none;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  box-shadow: 0 1px 0 transparent;
+  transition: box-shadow .3s, background-color .3s;
+}
+
+.header-inner { transition: min-height .35s var(--motion-ease); }
+.site-header.is-scrolled { box-shadow: 0 7px 24px #1a1f2612; background: #e5eff8; }
+.site-header.is-scrolled .header-inner { min-height: 4.2rem; }
+
+section[id] { scroll-margin-top: 5.3rem; }
+.site-nav > a { position: relative; }
+.site-nav > a::after { content: ''; position: absolute; left: 0; right: 0; bottom: -.4rem; height: 1px; background: var(--wine); transform: scaleX(0); transform-origin: left; transition: transform .3s var(--motion-ease); }
+.site-nav > a[aria-current='location'] { color: var(--wine); }
+.site-nav > a[aria-current='location']::after { transform: scaleX(1); }
+.site-nav > a:hover { text-decoration: none; }
+.site-nav > a:hover::after { transform: scaleX(1); }
+.hero-stage { overflow: clip; }
+.wedding-film video, .hero-film-poster { transform: translateY(var(--hero-shift, 0px)) scale(1.04); }
+.hero-line { display: block; overflow: clip; padding-block: .08em .13em; margin-block: -.08em -.13em; }
+.hero-line > span { display: block; }
+.hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .8rem 1.2rem; margin-top: 1.35rem; }
+.hero-actions > .button { border-color: var(--paper); background: var(--paper); color: var(--wine); border-radius: .45rem; }
+.hero-actions > .button:hover { border-color: var(--sun); background: var(--sun); }
+.hero-actions > .button:focus-visible { outline-color: white; }
+.hero-actions .hero-link { gap: .8rem; margin-top: 0; animation: none; }
+.hero-start-steps { display: flex; align-items: center; flex-wrap: wrap; gap: 1.35rem; margin-top: 1.2rem; color: #f0d5b8; }
+.hero-start-steps li { display: flex; align-items: center; gap: .4rem; font-size: .63rem; }
+.hero-start-steps svg { width: 1rem; height: 1rem; }
+.shagun-illustration { overflow: visible; }
+.shagun-eyes { transform-box: fill-box; transform-origin: center; animation: shagun-blink 7s linear infinite; }
+.shagun-wave { transform-origin: 64px 61px; animation: shagun-greeting 8s ease-in-out infinite; }
+@keyframes shagun-blink {
+  0%, 43%, 47%, 100% { transform: scaleY(1); }
+  45% { transform: scaleY(.08); }
+}
+@keyframes shagun-greeting {
+  0%, 4%, 22%, 100% { transform: rotate(0); }
+  7%, 15% { transform: rotate(12deg); }
+  11%, 19% { transform: rotate(-6deg); }
+}
+
+[data-motion='running'] .hero-line > span { animation: headline-arrive 1.05s var(--motion-ease) both; }
+[data-motion='running'] .hero-line:nth-child(2) > span { animation-delay: .12s; }
+[data-motion='running'] .hero-copy > .eyebrow { animation: detail-arrive .9s var(--motion-ease) both; }
+[data-motion='running'] .hero-description { animation: detail-arrive .9s .2s var(--motion-ease) both; }
+[data-motion='running'] .hero-link { animation: detail-arrive .9s .28s var(--motion-ease) both; }
+[data-motion='running'] .hero-actions { animation: detail-arrive .9s .2s var(--motion-ease) both; }
+[data-motion='running'] .hero-actions .hero-link { animation: none; }
+[data-motion='running'] .hero-start-steps li { animation: detail-arrive .8s .35s var(--motion-ease) backwards; }
+[data-motion='running'] .hero-start-steps li:nth-child(2) { animation-delay: .45s; }
+[data-motion='running'] .hero-start-steps li:nth-child(3) { animation-delay: .55s; }
+[data-motion='running'] .registration-chat { animation: chat-arrive 1s .15s var(--motion-ease) backwards; }
+#top[data-intro-complete='true'] .hero-line > span,
+#top[data-intro-complete='true'] .hero-copy > .eyebrow,
+#top[data-intro-complete='true'] .hero-description,
+#top[data-intro-complete='true'] .hero-actions,
+#top[data-intro-complete='true'] .hero-link,
+#top[data-intro-complete='true'] .hero-start-steps li,
+#top[data-intro-complete='true'] .registration-chat { animation: none; }
+
+@keyframes headline-arrive {
+  from { opacity: 0; transform: translateY(105%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes detail-arrive {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes chat-arrive {
+  from { opacity: .8; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+[data-reveal] { transition: opacity .75s var(--motion-ease), transform .75s var(--motion-ease); }
+[data-motion='running'] [data-reveal-state='waiting'] { opacity: 0; transform: translateY(24px); }
+[data-reveal-state='visible'] { opacity: 1; transform: translateY(0); }
+[data-reveal-state='waiting']:focus-within { opacity: 1; transform: none; }
+[data-reveal-order='1'] { transition-delay: .08s; }
+[data-reveal-order='2'] { transition-delay: .16s; }
+.button, .text-link, .plan-link { position: relative; }
+.button svg, .text-link svg, .plan-link svg { transition: transform .3s var(--motion-ease); }
+.button:hover svg { transform: translate(2px, -2px); }
+.text-link:hover svg, .plan-link:hover svg { transform: translateX(4px); }
+.button { transition: background-color .2s, border-color .2s, box-shadow .3s; }
+.button:hover { box-shadow: 0 5px 15px #7612261c; }
+.principle-top svg, .steps li > svg, .plan-detail > svg { transition: transform .4s var(--motion-ease); }
+.principle:hover .principle-top svg, .steps li:hover > svg { transform: translateY(-4px); }
+.varmala-options article:hover .plan-detail > svg { transform: translateX(-5px); }
+.plan-number { font-variant-numeric: tabular-nums; }
+.wedding-film .hero-film { position: absolute; inset: 0; opacity: 1; }
+.wedding-film .hero-film[data-ready='false'] { opacity: 0; }
+
+.verification-flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3rem; margin-top: 2.5rem; }
+.verification-flow li { position: relative; padding: 1.5rem; border: 1px solid #cba07380; background: #5d0e1f45; text-align: center; }
+.verification-flow li > svg { width: 1.8rem; height: 1.8rem; color: #f0d5b8; }
+.verification-flow h3 { margin-top: .75rem; font-size: .9rem; font-weight: 500; }
+.verification-flow p { margin-top: .2rem; color: #f6e6e9; font-size: .7rem; }
+.flow-connector { position: absolute; left: 100%; top: 50%; width: 3rem; height: 1px; background: #cba07380; }
+.flow-connector i { position: absolute; top: -2.5px; left: 0; width: 6px; height: 6px; border-radius: 50%; background: #f0d5b8; animation: check-travel 3.2s ease-in-out infinite; }
+.verification-flow li:nth-child(2) .flow-connector i { animation-delay: 1.6s; }
+@keyframes check-travel {
+  0%, 10% { opacity: 0; transform: translateX(0); }
+  20% { opacity: 1; }
+  65%, 100% { opacity: 0; transform: translateX(3rem); }
+}
+
+.faq-item { border-bottom: 1px solid #cad6e2; }
+.faq-item h3 { margin: 0; }
+.faq-item button { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%; min-height: 4.2rem; padding: 1rem 0; border: 0; background: transparent; color: var(--ink); text-align: left; font-size: .84rem; font-weight: 500; }
+.faq-item button svg { width: 1rem; height: 1rem; color: var(--wine); transition: transform .35s var(--motion-ease); }
+.faq-item[data-open='true'] button svg { transform: rotate(45deg); }
+.faq-answer { display: grid; grid-template-rows: 0fr; visibility: hidden; opacity: 0; transition: grid-template-rows .35s var(--motion-ease), opacity .25s, visibility .35s; }
+.faq-answer > div { min-height: 0; overflow: hidden; }
+.faq-answer p { max-width: 30rem; padding: 0 2rem 1.1rem 0; color: var(--muted); font-size: .8rem; }
+.faq-item[data-open='true'] .faq-answer { grid-template-rows: 1fr; visibility: visible; opacity: 1; }
+
+[data-motion='paused'] [data-reveal] { opacity: 1; transform: none; transition: none; }
+[data-motion='paused'] .flow-connector i { animation-play-state: paused; }
+[data-motion='paused'] .wedding-film video { transform: none; }
+[data-motion='paused'] .hero-line > span { transform: none; opacity: 1; }
+[data-motion='paused'] .faq-answer, [data-motion='paused'] .faq-item button svg { transition: none; }
+[data-motion='paused'] * { animation-play-state: paused !important; transition-duration: 0s !important; }
+
+@media (max-width: 55rem) {
+  .site-nav > a::after { bottom: .3rem; right: auto; width: 1.5rem; }
+}
+@media (max-width: 43rem) {
+  .hero h1 .hero-line { white-space: normal; }
+  .hero h1 .hero-line > span { white-space: nowrap; }
+  .hero-actions { gap: .65rem .9rem; }
+  .hero-start-steps { gap: 1.15rem; margin-top: 1rem; }
+  .hero-start-steps li { font-size: .61rem; }
+  .hero-folio { display: none; }
+  .verification-flow { grid-template-columns: 1fr; gap: 1.75rem; }
+  .verification-flow li { display: grid; grid-template-columns: auto 1fr; text-align: left; column-gap: 1rem; padding: 1.15rem; }
+  .verification-flow li > svg { grid-row: span 2; align-self: center; }
+  .verification-flow h3 { margin-top: 0; }
+  .flow-connector { left: 50%; top: 100%; height: 1.75rem; width: 1px; }
+  .flow-connector i { top: 0; left: -2.5px; animation-name: check-travel-vertical; }
+  @keyframes check-travel-vertical {
+    0%, 10% { opacity: 0; transform: translateY(0); }
+    20% { opacity: 1; }
+    65%, 100% { opacity: 0; transform: translateY(1.75rem); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-line > span, .hero-copy > .eyebrow, .hero-description, .hero-link, .registration-chat { animation: none !important; }
+  [data-reveal-state='waiting'] { opacity: 1 !important; transform: none !important; }
+  .flow-connector i { animation: none !important; }
+  .wedding-film video { transform: none; }
+}
+
+@media (max-width: 23rem) {
+  .hero h1 { font-size: clamp(2.85rem, 15.8vw, 3.25rem); }
+  .chat-avatar { width: 2.8rem; height: 2.8rem; }
+  .chat-header { gap: .55rem; }
+  .chat-header h2 { font-size: 1rem; }
+  .hero-actions > .button { padding-inline: .8rem; gap: .65rem; font-size: .73rem; }
+}
