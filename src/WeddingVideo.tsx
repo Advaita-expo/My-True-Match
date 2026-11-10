@@ -1,4 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
+import { assetUrl } from './assetUrl';
+
+const weddingPoster = assetUrl('hero-films/wedding-ritual.webp');
+
 export function WeddingVideo({ motionEnabled }: { motionEnabled: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [ready, setReady] = useState(false);
@@ -40,10 +44,10 @@ export function WeddingVideo({ motionEnabled }: { motionEnabled: boolean }) {
 
   return (
     <div className="wedding-film">
-      <img className="hero-film-poster" src="/assets/hero-films/wedding-ritual.webp" alt="" aria-hidden="true" fetchPriority="high" />
+      <img className="hero-film-poster" src={weddingPoster} alt="" aria-hidden="true" fetchPriority="high" />
       <video ref={videoRef} className="hero-film" data-ready={ready}
-        src="/assets/hero-films/mytruematch-wedding-loop.mp4"
-        poster="/assets/hero-films/wedding-ritual.webp"
+        src={assetUrl('hero-films/mytruematch-wedding-loop.mp4')}
+        poster={weddingPoster}
         width="1280" height="720" preload="auto" autoPlay={motionEnabled} loop muted playsInline
         disablePictureInPicture aria-hidden="true"
         onLoadedData={() => setReady(true)}

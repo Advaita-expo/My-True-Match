@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Icon } from './Icon';
 import type { IconName } from './Icon';
+import { assetUrl } from './assetUrl';
 import { RegistrationChat } from './RegistrationChat';
 import { WeddingVideo } from './WeddingVideo';
 import { links } from './links';
@@ -42,7 +43,7 @@ const questions = [
 function Brand() {
   return (
     <a className="brand" href="#top" aria-label="MyTrueMatch home">
-      <img src="/assets/mytruematch-mark.png" alt="" width="35" height="30" />
+      <img src={assetUrl('mytruematch-mark.png')} alt="" width="35" height="30" />
       <span>MyTrueMatch</span>
     </a>
   );
@@ -195,7 +196,7 @@ function Varmala({ motionEnabled }: { motionEnabled: boolean }) {
         <SectionLabel number="03">A separate matchmaking service by MyTrueMatch</SectionLabel>
         <div className="varmala-brand-row" data-reveal>
           <div className="varmala-identity">
-            <img src="/assets/varmala-symbol.svg" alt="" width="80" height="53" />
+            <img src={assetUrl('varmala-symbol.svg')} alt="" width="80" height="53" />
             <p className="varmala-wordmark">Varmala<span>Curated matchmaking</span></p>
           </div>
           <p className="varmala-positioning">For people ready for marriage.<span>A personal search, led by a dedicated matchmaker.</span></p>

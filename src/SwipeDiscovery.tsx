@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { CSSProperties, PointerEvent } from 'react';
 import { Icon } from './Icon';
+import { assetUrl } from './assetUrl';
 import { links } from './links';
 import './SwipeDiscovery.css';
 
@@ -19,19 +20,19 @@ const profiles: SampleProfile[] = [
   {
     name: 'Ananya', age: 29, city: 'Bengaluru', work: 'Product designer',
     interests: ['Bookshops', 'Weekend hikes'],
-    photo: '/assets/samples/sample-ananya.webp', photographer: 'Anil Sharma',
+    photo: assetUrl('samples/sample-ananya.webp'), photographer: 'Anil Sharma',
     photoSource: 'https://www.pexels.com/photo/elegant-portrait-of-a-smiling-woman-outdoors-in-bengaluru-31878426/',
   },
   {
     name: 'Rohan', age: 30, city: 'Pune', work: 'Architect',
     interests: ['Slow Sundays', 'Live music'],
-    photo: '/assets/samples/sample-rohan.webp', photographer: 'Shafeeque k',
+    photo: assetUrl('samples/sample-rohan.webp'), photographer: 'Shafeeque k',
     photoSource: 'https://www.pexels.com/photo/young-man-smiling-in-outdoor-portrait-30109427/',
   },
   {
     name: 'Meera', age: 28, city: 'Mumbai', work: 'Content strategist',
     interests: ['Good coffee', 'Long walks'],
-    photo: '/assets/samples/sample-meera.webp', photographer: 'Satyam Pixels',
+    photo: assetUrl('samples/sample-meera.webp'), photographer: 'Satyam Pixels',
     photoSource: 'https://www.pexels.com/photo/vibrant-outdoor-portrait-of-smiling-woman-in-india-39767463/',
   },
 ];
