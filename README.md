@@ -20,3 +20,13 @@ npm run build
 ```
 
 The build runs the TypeScript checks and writes the static site to `dist/`.
+
+## GitHub Pages
+
+Build for the repository's Pages URL.
+
+```sh
+npm run build -- --base=/My-True-Match/
+```
+
+Publish the contents of `dist/` to the root of the `gh-pages` branch with an empty `.nojekyll` file. In **Settings → Pages**, select **Deploy from a branch**, then choose **gh-pages** and **/(root)**.
